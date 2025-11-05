@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="weather.css">
+</head>
+
+<body>
+    <div class="page-container">
+        <div class="contentBox">
+            <div class="left-main">
+                <header>
+                    Weather App 🌦
+                </header>
+                <div class="searchBar">
+                    <div class="searchElements">
+                        <input type="text" id="searchBar" placeholder="Search City..." required>
+                        <button>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+                                fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.3-4.3"></path>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="weatherContainer">
+                    <header>New Delhi</header>
+                    <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-cloud text-blue-500"
+                            data-fg-b7rw1="3b4c6:0:/App.tsx:48:14:1803:24:e:Cloud:BFqt">
+                            <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                        </svg>
+                    </div>
+                    <div class="condition">Partly Cloudy</div>
+                    <div class="temp">28°C</div>
+                    <div class="otherInfo">
+                        <div class="humidity">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    data-fg-b7rw34="3b4c6:0:/App.tsx:152:21:5771:48:e:Droplets:BO45">
+                                    <path
+                                        d="M7 16.3c2.2 0 4-1.83 4-4.05 0-1.16-.57-2.26-1.71-3.19S7.29 6.75 7 5.3c-.29 1.45-1.14 2.84-2.29 3.76S3 11.1 3 12.25c0 2.22 1.8 4.05 4 4.05z">
+                                    </path>
+                                    <path
+                                        d="M12.56 6.6A10.97 10.97 0 0 0 14 3.02c.5 2.5 2 4.9 4 6.5s3 3.5 3 5.5a6.98 6.98 0 0 1-11.91 4.97">
+                                    </path>
+                                </svg>
+                            </div>
+                            <div class="name">Humidity:&nbsp;<span>5%</span></div>
+                        </div>
+                        <div class="wind">
+                            <div class="icon">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="lucide lucide-wind text-gray-500 dark:text-gray-400"
+                                    data-fg-b7rw40="3b4c6:0:/App.tsx:156:21:6040:63:e:Wind:BO45">
+                                    <path d="M12.8 19.6A2 2 0 1 0 14 16H2"></path>
+                                    <path d="M17.5 8a2.5 2.5 0 1 1 2 4H2"></path>
+                                    <path d="M9.8 4.4A2 2 0 1 1 11 8H2"></path>
+                                </svg>
+                            </div>
+                            <div class="name">Wind:&nbsp;<span>7 m/s</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="right-main">
+                <header>5-Day Forecast</header>
+                <ul>
+                    <li>
+                        <div class="day">
+                            Mon
+                        </div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt">
+                                <circle cx="12" cy="12" r="4"></circle>
+                                <path d="M12 2v2"></path>
+                                <path d="M12 20v2"></path>
+                                <path d="m4.93 4.93 1.41 1.41"></path>
+                                <path d="m17.66 17.66 1.41 1.41"></path>
+                                <path d="M2 12h2"></path>
+                                <path d="M20 12h2"></path>
+                                <path d="m6.34 17.66-1.41 1.41"></path>
+                                <path d="m19.07 4.93-1.41 1.41"></path>
+                            </svg>
+                        </div>
+                        <div class="maxTemp">Max:&nbsp;<span></span></div>
+                        <div class="minTemp">Min:&nbsp;<span></span></div>
+                    </li>
+                    <li>
+                        <div class="day">
+                            Tue
+                        </div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24"
+                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round" class="lucide lucide-cloud text-blue-500"
+                                data-fg-b7rw1="3b4c6:0:/App.tsx:48:14:1803:24:e:Cloud:BFqt">
+                                <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"></path>
+                            </svg>
+                        </div>
+                        <div class="maxTemp">Max:&nbsp;<span></span></div>
+                        <div class="minTemp">Min:&nbsp;<span></span></div>
+                    </li>
+                    <li>
+                        <div class="day">
+                            Wed
+                        </div>
+                        <div class="icon">
+
+                        </div>
+                        <div class="maxTemp">Max:&nbsp;<span></span></div>
+                        <div class="minTemp">Min:&nbsp;<span></span></div>
+                    </li>
+                    <li>
+                        <div class="day">
+                            Thu
+                        </div>
+                        <div class="icon">
+
+                        </div>
+                        <div class="maxTemp">Max:&nbsp;<span></span></div>
+                        <div class="minTemp">Min:&nbsp;<span></span></div>
+                    </li>
+                    <li>
+                        <div class="day">
+                            Fri
+                        </div>
+                        <div class="icon">
+
+                        </div>
+                        <div class="maxTemp">Max:&nbsp;<span></span></div>
+                        <div class="minTemp">Min:&nbsp;<span></span></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="hourlyForecastSection">
+            <div class="hourlyForecast">
+                <header>Today's Hourly Breakdown</header>
+                <ul>
+                    <li>
+                        <div class="time">00:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">03:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">06:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">09:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">12:00 PM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">03:00 PM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">06:00 PM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">09:00 PM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">12:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">03:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">06:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">09:00 AM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                    <li>
+                        <div class="time">12:00 PM</div>
+                        <div class="icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-sun text-yellow-500" data-fg-b7rw0="3b4c6:0:/App.tsx:46:14:1720:50:e:Sun:BFqt"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2"></path><path d="M12 20v2"></path><path d="m4.93 4.93 1.41 1.41"></path><path d="m17.66 17.66 1.41 1.41"></path><path d="M2 12h2"></path><path d="M20 12h2"></path><path d="m6.34 17.66-1.41 1.41"></path><path d="m19.07 4.93-1.41 1.41"></path></svg>
+                        </div>
+                        <div class="temp">24°C</div>
+                    </li>
+                </ul>
+                <div class="leftButton">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left" data-fg-b7rw74="3b4c6:0:/App.tsx:202:15:8296:25:e:ChevronLeft:BO45"><path d="m15 18-6-6 6-6"></path></svg>
+                    </button>
+                </div>
+                <div class="rightButton">
+                    <button>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" data-fg-b7rw89="3b4c6:0:/App.tsx:234:15:9810:26:e:ChevronRight:BO45"><path d="m9 18 6-6-6-6"></path></svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="weather.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400..800&family=Baloo+Bhai+2:wght@400..800&family=Bitcount+Prop+Single+Ink:wght@100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", "Inter", sans-serif;
+}
+
+.page-container{
+    padding: 32px;
+    background-image: linear-gradient(to bottom in oklab, #bedbff, #eff6ff, #fff);
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contentBox {
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    padding: 24px 0;
+    gap: 30px;
+}
+
+.contentBox .left-main {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contentBox .right-main {
+    width: 60%;
+}
+
+.contentBox .left-main header {
+    height: 24px;
+    display: flex;
+    justify-content: left;
+}
+
+.contentBox .left-main .searchBar {
+    padding: 16px;
+    background-color: #ffffffcc;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    border: 1px solid #0000001a;
+    border-radius: 16px;
+    backdrop-filter: blur(8px);
+}
+
+.contentBox .left-main .searchBar .searchElements {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    height: 36px;
+    box-sizing: border-box;
+}
+
+.contentBox .left-main .searchBar .searchElements input {
+    padding: 4px 12px;
+    width: 85%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #fff;
+    font-size: 14px;
+    line-height: 1.4;
+    border: 1px solid #ebe6e7;
+    outline: transparent;
+    border-radius: 14px;
+    transition: all 0.2s ease-in-out;
+}
+
+.contentBox .left-main .searchBar .searchElements input:focus {
+    outline: 2.5px solid #a1a1a180;
+}
+
+.contentBox .left-main .searchBar .searchElements button {
+    width: 15%;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: #030213;
+    width: 40px;
+    padding: 8px 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    outline: transparent;
+    border: transparent;
+    border-radius: 14px;
+}
+
+.contentBox .left-main .searchBar .searchElements button svg {
+    stroke: #fff;
+}
+
+.contentBox .left-main .weatherContainer {
+    background-color: #fff;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 24px;
+    width: 100%;
+    box-sizing: border-box;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+}
+
+.contentBox .left-main .weatherContainer header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    margin-bottom: 16px;
+    color: #0a0a0a;
+}
+
+.contentBox .left-main .weatherContainer .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 16px 0;
+    height: 80px;
+    width: 80px;
+}
+
+.contentBox .left-main .weatherContainer .icon svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #2b7fff;
+}
+
+.contentBox .left-main .weatherContainer .condition {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+    margin-bottom: 16px;
+    color: #4a5565;
+}
+
+.contentBox .left-main .weatherContainer .temp {
+    font-family: "Inter", sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    height: 48px;
+    width: auto;
+    margin: 8px 0;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo {
+    width: 100%;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid rgba(179, 179, 179, 0.337);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .humidity,
+.wind {
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .humidity .name {
+    color: #4a5565;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .wind .name {
+    color: #4a5565;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .humidity .icon {
+    height: 20px;
+    width: 20px;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .humidity .icon svg {
+    stroke: #2b7fff;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .wind .icon {
+    height: 20px;
+    width: 20px;
+}
+
+.contentBox .left-main .weatherContainer .otherInfo .wind .icon svg {
+    stroke: #6a7282;
+}
+
+.contentBox .right-main {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.contentBox .right-main header {
+    height: 24px;
+    display: flex;
+    justify-content: left;
+}
+
+.contentBox .right-main ul {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    overflow-wrap: anywhere;
+    width: 100%;
+}
+
+.contentBox .right-main ul li {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 14px;
+    padding: 16px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+.contentBox .right-main ul li:hover{
+    box-shadow: 0 4px 10px 3px rgb(0 0 0 / 0.1);
+}
+
+.contentBox .right-main ul li .day {
+    width: 100%;
+    margin-bottom: 12px;
+    height: 24px;
+    text-align: center;
+}
+
+.contentBox .right-main ul li .icon {
+    width: 100%;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 12px;
+}
+
+.contentBox .right-main ul li .icon svg {
+    height: 40px;
+    width: 40px;
+}
+
+.contentBox .right-main ul li .maxTemp,
+.minTemp {
+    height: 24px;
+    color: #6a7282;
+    margin-bottom: 3px;
+    font-size: 14px;
+}
+
+.page-container .hourlyForecastSection{
+    margin: 0 auto;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+}
+
+.hourlyForecast{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 48px 0 96px;
+    position: relative;
+}
+
+.hourlyForecast header{
+    width: 100%;
+    height: 24px;
+    margin-bottom: 24px;
+    text-align: left;
+}
+
+.hourlyForecast ul{
+    display: flex;
+    gap: 15px;
+    overflow: hidden;
+    padding-bottom: 10px;
+    padding-right: 5px;
+    padding-left: 5px;
+}
+
+.hourlyForecast ul li{
+    height: 96px !important;
+    width: 80px !important;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    background-color: #ffffffcc;
+    border-radius: 14px;
+    box-shadow:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    padding: 16px;
+    border: 1px solid rgb(227, 227, 227);
+}
+
+.hourlyForecast ul li .time{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 22px;
+    color: #4a5565;
+    margin-bottom: 8px;
+}
+
+.hourlyForecast ul li .icon{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.hourlyForecast ul li .temp{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 24px;
+}
+
+.leftButton, .rightButton{
+    position: absolute;
+    top: 50%;
+}
+.leftButton{
+    top: 50%;
+    left: 0;
+}
+.rightButton{
+    top: 50%;
+    right: 0;
+}
+
+.leftButton button{
+    visibility: hidden;
+    opacity: 0;
+    height: 36px;
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffffff2;
+    border-radius: 50%;
+    border: 1px solid rgba(208, 208, 208, 0.669);
+    outline: transparent;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    z-index: 10;
+    transition: all 0.1s ease-in-out;
+}
+
+.rightButton button{
+    visibility: hidden;
+    opacity: 0;
+    height: 36px;
+    width: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fffffff2;
+    border-radius: 50%;
+    border: 1px solid rgba(208, 208, 208, 0.669);
+    outline: transparent;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    z-index: 10;
+    transition: all 0.1s ease-in-out;
+}
