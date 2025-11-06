@@ -14,6 +14,11 @@ const nextFiveDays = document.querySelectorAll(".contentBox .right-main ul li .d
 const nextFiveDayMinTemp = document.querySelectorAll(".contentBox .right-main ul li .minTemp span");
 const nextFiveDayMaxTemp = document.querySelectorAll(".contentBox .right-main ul li .maxTemp span");
 const nextFiveDaysSVG = document.querySelectorAll(".contentBox .right-main ul li .icon");
+const hourlySectionList = document.querySelectorAll(".hourlyForecast ul li");
+const hourlyWeather = document.querySelectorAll(".hourlyForecast ul li .icon");
+const hourlyTemp = document.querySelectorAll(".hourlyForecast ul li .temp");
+const hourlyTime = document.querySelectorAll(".hourlyForecast ul li .time");
+const unitChangerBtn = document.querySelector(".unitChanger button");
 
 
 const weatherSVG = {
@@ -97,7 +102,7 @@ async function getTodaysWeather() {
         return 0;
     }
 
-    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${inputValue}&appid=${myAPI}&units=metric`
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(inputValue)}&appid=${myAPI}&units=metric`
 
     try {
         const response = await fetch(URL);
@@ -106,6 +111,7 @@ async function getTodaysWeather() {
         cityName.textContent = finalData.name;
         cityCondition.textContent = finalData.weather[0].main;
         cityTemp.textContent = `${parseFloat(finalData.main.temp.toFixed(1))}°C`;
+        cityTemp.dataset.celsius = parseFloat(finalData.main.temp.toFixed(1));
         cityHumidity.textContent = finalData.main.humidity + "%";
         cityWind.textContent = finalData.wind.speed + "  m/s";
         cityConditionSVG.innerHTML = getSVG(finalData.weather[0].main);
@@ -122,7 +128,7 @@ async function getTodaysWeather() {
 }
 
 async function getFiveDayForecast(city) {
-    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=60be50dd75f4feb87fa97509ee740d69&units=metric`;
+    const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=60be50dd75f4feb87fa97509ee740d69&units=metric`;
     const response = await fetch(url);
     const FinalData = await response.json();
 
@@ -135,7 +141,11 @@ async function getFiveDayForecast(city) {
         nextFiveDaysSVG[i].innerHTML = getSVG(fiveDays[i].weather[0].main);
         nextFiveDayMinTemp[i].textContent = parseFloat(fiveDays[i].main.temp_min.toFixed(1)) + "°C";
         nextFiveDayMaxTemp[i].textContent = parseFloat(fiveDays[i].main.temp_max.toFixed(1)) + "°C";
+        nextFiveDayMinTemp[i].dataset.celsius = parseFloat(fiveDays[i].main.temp_min.toFixed(1));
+        nextFiveDayMaxTemp[i].dataset.celsius = parseFloat(fiveDays[i].main.temp_max.toFixed(1));
     }
+
+    getHourlyWeather(FinalData);
 }
 
 function getDayName(date) {
@@ -146,6 +156,92 @@ function getDayName(date) {
 
 function getSVG(condition) {
     return weatherSVG[condition] || weatherSVG["Mist"];
+}
+
+async function getHourlyWeather(finalData) {
+    const hourlyData = finalData.list.slice(0, 13);
+    for (let i = 0; i < hourlyData.length; i++) {
+        hourlyWeather[i].innerHTML = getSVG(finalData.list[i].weather[0].main);
+        hourlyTime[i].textContent = new Date(hourlyData[i].dt_txt)
+            .toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+        hourlyTemp[i].textContent = parseFloat(finalData.list[i].main.temp.toFixed(1)) + "°C";
+        hourlyTemp[i].dataset.celsius = parseFloat(finalData.list[i].main.temp.toFixed(1));
+    }
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    const inputValue = "New Delhi";
+
+    if (!inputValue) {
+        alert("Please enter a City!");
+        return 0;
+    }
+
+    const URL = `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(inputValue)}&appid=${myAPI}&units=metric`
+
+    try {
+        const response = await fetch(URL);
+        const finalData = await response.json();
+
+        cityName.textContent = finalData.name;
+        cityCondition.textContent = finalData.weather[0].main;
+        cityTemp.textContent = `${parseFloat(finalData.main.temp.toFixed(1))}°C`;
+        cityTemp.dataset.celsius = parseFloat(finalData.main.temp.toFixed(1));
+        cityHumidity.textContent = finalData.main.humidity + "%";
+        cityWind.textContent = finalData.wind.speed + "  m/s";
+        cityConditionSVG.innerHTML = getSVG(finalData.weather[0].main);
+        getFiveDayForecast(inputValue);
+
+    }
+    catch (err) {
+        console.error("Error fetching Weather", err);
+        alert("Something went wrong while fetching data.");
+        return 0;
+    }
+
+    searchBar.value = "";
+    window.scrollTo(0, 0);
+});
+
+unitChangerBtn.addEventListener("click", () => {
+    if (unitChangerBtn.textContent === "°C") {
+        unitChangerBtn.textContent = "°F";
+        convertTemp(cityTemp, "C");
+        for (let i = 0; i < nextFiveDayMaxTemp.length; i++) {
+            convertTemp(nextFiveDayMaxTemp[i], "C");
+        }
+        for (let i = 0; i < nextFiveDayMinTemp.length; i++) {
+            convertTemp(nextFiveDayMinTemp[i], "C");
+        }
+        for (let i = 0; i < 13; i++) {   
+            convertTemp(hourlyTemp[i], "C");
+        }
+
+    } else {
+        unitChangerBtn.textContent = "°C";
+        convertTemp(cityTemp, "F");
+        for (let i = 0; i < nextFiveDayMaxTemp.length; i++) {
+            convertTemp(nextFiveDayMaxTemp[i], "F");
+        }
+        for (let i = 0; i < nextFiveDayMinTemp.length; i++) {
+            convertTemp(nextFiveDayMinTemp[i], "F");
+        }
+        for (let i = 0; i < 13; i++) {   
+            convertTemp(hourlyTemp[i], "F");
+        }
+    }
+});
+
+function convertTemp(element, toUnit) {
+    const celsiusValue = parseFloat(element.dataset.celsius);
+
+    if (toUnit === "F") {
+        const fahrenheit = (celsiusValue * 9/5) + 32;
+        element.textContent = `${parseFloat(fahrenheit.toFixed(1))}°F`;
+    } 
+    else { 
+        element.textContent = `${parseFloat(celsiusValue.toFixed(1))}°C`;
+    }
 }
 
 searchBtn.addEventListener("click", () => {

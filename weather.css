@@ -324,6 +324,11 @@
     margin-bottom: 8px;
 }
 
+.hourlyForecast ul li .icon svg{
+    height: 32px;
+    width: 32px;
+}
+
 .hourlyForecast ul li .temp{
     display: flex;
     justify-content: center;
@@ -376,4 +381,29 @@
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     z-index: 10;
     transition: all 0.1s ease-in-out;
+}
+
+.unitChanger{
+    position: fixed;
+    bottom: 30px;
+    right: 35px;
+}
+
+.unitChanger button{
+    font-family: "Inter", "Poppins", sans-serif;
+    background-color: #fff;
+    height: 45px;
+    width: 45px;
+    border-radius: 10px;
+    border: 1.5px solid rgba(213, 213, 213, 0.828);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+    font-size: 18px;
+    line-height: 1.4;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+
+.unitChanger button:hover{
+    border-color: #2b7fff;
 }
