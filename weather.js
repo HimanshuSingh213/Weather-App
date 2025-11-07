@@ -19,6 +19,12 @@ const hourlyWeather = document.querySelectorAll(".hourlyForecast ul li .icon");
 const hourlyTemp = document.querySelectorAll(".hourlyForecast ul li .temp");
 const hourlyTime = document.querySelectorAll(".hourlyForecast ul li .time");
 const unitChangerBtn = document.querySelector(".unitChanger button");
+const aqiSection = document.querySelector(".aqiSection");
+const aqiValue = document.querySelector(".aqiSection header span");
+const aqiCondition = document.querySelector(".aqiSection.good header condition");
+const PM2 = document.querySelector(".aqiSection .pm .aqiLeft .readings");
+const PM10 = document.querySelector(".aqiSection .pm .aqiRight .readings");
+const myToken = "44e3855787e631852fabe8c8022fb88d4ae92933";
 
 
 const weatherSVG = {
@@ -116,6 +122,7 @@ async function getTodaysWeather() {
         cityWind.textContent = finalData.wind.speed + "  m/s";
         cityConditionSVG.innerHTML = getSVG(finalData.weather[0].main);
         getFiveDayForecast(inputValue);
+        getAQI(inputValue);
 
     }
     catch (err) {
@@ -163,7 +170,7 @@ async function getHourlyWeather(finalData) {
     for (let i = 0; i < hourlyData.length; i++) {
         hourlyWeather[i].innerHTML = getSVG(finalData.list[i].weather[0].main);
         hourlyTime[i].textContent = new Date(hourlyData[i].dt_txt)
-            .toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+            .toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
         hourlyTemp[i].textContent = parseFloat(finalData.list[i].main.temp.toFixed(1)) + "°C";
         hourlyTemp[i].dataset.celsius = parseFloat(finalData.list[i].main.temp.toFixed(1));
     }
@@ -191,6 +198,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         cityWind.textContent = finalData.wind.speed + "  m/s";
         cityConditionSVG.innerHTML = getSVG(finalData.weather[0].main);
         getFiveDayForecast(inputValue);
+        getAQI(inputValue);
 
     }
     catch (err) {
@@ -213,7 +221,7 @@ unitChangerBtn.addEventListener("click", () => {
         for (let i = 0; i < nextFiveDayMinTemp.length; i++) {
             convertTemp(nextFiveDayMinTemp[i], "C");
         }
-        for (let i = 0; i < 13; i++) {   
+        for (let i = 0; i < 13; i++) {
             convertTemp(hourlyTemp[i], "C");
         }
 
@@ -226,7 +234,7 @@ unitChangerBtn.addEventListener("click", () => {
         for (let i = 0; i < nextFiveDayMinTemp.length; i++) {
             convertTemp(nextFiveDayMinTemp[i], "F");
         }
-        for (let i = 0; i < 13; i++) {   
+        for (let i = 0; i < 13; i++) {
             convertTemp(hourlyTemp[i], "F");
         }
     }
@@ -236,10 +244,10 @@ function convertTemp(element, toUnit) {
     const celsiusValue = parseFloat(element.dataset.celsius);
 
     if (toUnit === "F") {
-        const fahrenheit = (celsiusValue * 9/5) + 32;
+        const fahrenheit = (celsiusValue * 9 / 5) + 32;
         element.textContent = `${parseFloat(fahrenheit.toFixed(1))}°F`;
-    } 
-    else { 
+    }
+    else {
         element.textContent = `${parseFloat(celsiusValue.toFixed(1))}°C`;
     }
 }
@@ -303,3 +311,80 @@ rightButton.addEventListener("click", () => {
         behavior: 'smooth'
     });
 });
+
+if (window.matchMedia("(max-width: 576px)").matches) {
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    hourlyForecast.addEventListener("touchstart", (e) => {
+        isDown = true;
+        startX = e.touches[0].pageX - hourlyForecast.offsetLeft;
+        scrollLeft = hourlyForecast.scrollLeft;
+    });
+
+    hourlyForecast.addEventListener("touchend", () => {
+        isDown = false;
+    });
+
+    hourlyForecast.addEventListener("touchmove", (e) => {
+        if (!isDown) return;
+        const x = e.touches[0].pageX - hourlyForecast.offsetLeft;
+        const walk = (x - startX) * 1.3;
+        hourlyForecast.scrollLeft = scrollLeft - walk;
+    });
+
+}
+
+async function getAQI(city) {
+    const URL = `https://api.waqi.info/feed/${encodeURIComponent(city)}/?token=${myToken}`;
+
+    const response = await fetch(URL);
+    const finalData = await response.json();
+
+    if (finalData.status !== "ok") return;
+
+    const aqiVal = finalData.data.aqi;
+    updateAQIClass(aqiVal);
+
+    aqiValue.textContent = `AQI ${aqiVal}`;
+
+    let pm25 = "-";
+    let pm10 = "-";
+    if (finalData.data.iaqi.pm25 && finalData.data.iaqi.pm25.v !== undefined) {
+        pm25 = finalData.data.iaqi.pm25.v;
+    }
+    PM2.textContent = `${pm25} μg/m³`;
+
+    if (finalData.data.iaqi.pm10 && finalData.data.iaqi.pm10.v !== undefined) {
+        pm10 = finalData.data.iaqi.pm10.v;
+    }
+    PM10.textContent = `${pm10} μg/m³`;
+
+}
+
+const aqiClasses = ["good", "fair", "moderate", "poor", "veryPoor", "hazardous"];
+
+async function updateAQIClass(aqiVal) {
+
+    aqiSection.classList.remove(...aqiClasses);
+
+    let aqiClass = "";
+
+    if (aqiVal <= 50) aqiClass = "good";
+    else if (aqiVal <= 100) aqiClass = "fair";
+    else if (aqiVal <= 150) aqiClass = "moderate";
+    else if (aqiVal <= 200) aqiClass = "poor";
+    else if (aqiVal <= 300) aqiClass = "verypoor";
+    else aqiClass = "hazardous";
+
+    aqiSection.classList.add(aqiClass);
+
+    if (aqiClass === "verypoor") {
+        aqiCondition.textContent = "Very Poor";
+    } 
+    else {
+        aqiCondition.textContent = aqiClass.charAt(0).toUpperCase() + aqiClass.slice(1);
+    }
+}

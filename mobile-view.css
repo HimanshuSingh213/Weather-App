@@ -1,0 +1,69 @@
+@media (max-width: 576px) {
+
+    .page-container {
+        padding: 0 18px;
+    }
+
+    .contentBox {
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 24px 0;
+        gap: 30px;
+    }
+
+    .contentBox .left-main {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .contentBox .right-main {
+        width: 100%;
+    }
+
+    .contentBox .right-main ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    .contentBox .right-main ul li {
+        flex: content;
+        flex-wrap: wrap;
+        padding: 16px;
+        box-sizing: border-box;
+        width: 50% !important;
+    }
+
+
+    .hourlyForecast ul li .time {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 20px;
+        color: #4a5565;
+        margin-bottom: 8px;
+    }
+
+    .leftButton button {
+        visibility: visible;
+        opacity: 1;
+        height: 30px;
+        width: 30px;
+    }
+
+    .rightButton button {
+        visibility: visible;
+        opacity: 1;
+        height: 30px;
+        width: 30px;
+    }
+
+    .aqiSection .pm .aqiLeft,
+    .aqiRight {
+        width: 35%;
+    }
+}

@@ -6,7 +6,7 @@
     font-family: "Poppins", "Inter", sans-serif;
 }
 
-.page-container{
+.page-container {
     padding: 32px;
     background-image: linear-gradient(to bottom in oklab, #bedbff, #eff6ff, #fff);
     height: 100%;
@@ -38,6 +38,7 @@
     height: 24px;
     display: flex;
     justify-content: left;
+    font-family: "Poppins", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 }
 
 .contentBox .left-main .searchBar {
@@ -200,7 +201,6 @@
 }
 
 .contentBox .right-main {
-    width: 60%;
     display: flex;
     flex-direction: column;
     gap: 24px;
@@ -233,7 +233,7 @@
     transition: all 0.2s ease-in-out;
 }
 
-.contentBox .right-main ul li:hover{
+.contentBox .right-main ul li:hover {
     box-shadow: 0 4px 10px 3px rgb(0 0 0 / 0.1);
 }
 
@@ -264,14 +264,14 @@
     font-size: 14px;
 }
 
-.page-container .hourlyForecastSection{
+.page-container .hourlyForecastSection {
     margin: 0 auto;
     max-width: 1200px;
     display: flex;
     justify-content: center;
 }
 
-.hourlyForecast{
+.hourlyForecast {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -279,14 +279,14 @@
     position: relative;
 }
 
-.hourlyForecast header{
+.hourlyForecast header {
     width: 100%;
     height: 24px;
     margin-bottom: 24px;
     text-align: left;
 }
 
-.hourlyForecast ul{
+.hourlyForecast ul {
     display: flex;
     gap: 15px;
     overflow: hidden;
@@ -295,7 +295,7 @@
     padding-left: 5px;
 }
 
-.hourlyForecast ul li{
+.hourlyForecast ul li {
     height: 96px !important;
     width: 80px !important;
     display: flex;
@@ -303,12 +303,12 @@
     flex-shrink: 0;
     background-color: #ffffffcc;
     border-radius: 14px;
-    box-shadow:  0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     padding: 16px;
     border: 1px solid rgb(227, 227, 227);
 }
 
-.hourlyForecast ul li .time{
+.hourlyForecast ul li .time {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -317,39 +317,42 @@
     margin-bottom: 8px;
 }
 
-.hourlyForecast ul li .icon{
+.hourlyForecast ul li .icon {
     display: flex;
     justify-content: center;
     align-items: center;
     margin-bottom: 8px;
 }
 
-.hourlyForecast ul li .icon svg{
+.hourlyForecast ul li .icon svg {
     height: 32px;
     width: 32px;
 }
 
-.hourlyForecast ul li .temp{
+.hourlyForecast ul li .temp {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 24px;
 }
 
-.leftButton, .rightButton{
+.leftButton,
+.rightButton {
     position: absolute;
     top: 50%;
 }
-.leftButton{
+
+.leftButton {
     top: 50%;
     left: 0;
 }
-.rightButton{
+
+.rightButton {
     top: 50%;
     right: 0;
 }
 
-.leftButton button{
+.leftButton button {
     visibility: hidden;
     opacity: 0;
     height: 36px;
@@ -366,7 +369,7 @@
     transition: all 0.1s ease-in-out;
 }
 
-.rightButton button{
+.rightButton button {
     visibility: hidden;
     opacity: 0;
     height: 36px;
@@ -383,13 +386,13 @@
     transition: all 0.1s ease-in-out;
 }
 
-.unitChanger{
+.unitChanger {
     position: fixed;
     bottom: 30px;
     right: 35px;
 }
 
-.unitChanger button{
+.unitChanger button {
     font-family: "Inter", "Poppins", sans-serif;
     background-color: #fff;
     height: 45px;
@@ -404,6 +407,203 @@
     transition: all 0.15s ease-in-out;
 }
 
-.unitChanger button:hover{
+.unitChanger button:hover {
     border-color: #2b7fff;
+}
+
+.aqiSection {
+    margin-top: 16px;
+    padding-top: 16px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: center;
+    gap: 10px;
+    border-top: 1px solid rgba(179, 179, 179, 0.337);
+}
+
+.aqiSection header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin: 0 !important;
+    color: #4a5565 !important;
+}
+
+.aqiSection header span {
+    font-weight: 500;
+    font-size: 12px;
+    color: #fff;
+    background-color: #00c951;
+    border-radius: 20px;
+    padding: 4px 12px;
+    line-height: 1.4;
+}
+
+.aqiSection.good header span {
+    background-color: #00c951;
+}
+
+.aqiSection.fair header span {
+    background-color: #f0b100;
+}
+
+.aqiSection.moderate header span {
+    background-color: #ff6900;
+}
+
+.aqiSection.poor header span {
+    background-color: #fb2c36;
+}
+
+.aqiSection.veryPoor header span {
+    background-color: #ad46ff;
+}
+
+.aqiSection.hazardous header span {
+    background-color: #8b0836;
+}
+
+.aqiSection.good header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #008236;
+}
+
+.aqiSection.fair header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #a65f00;
+}
+
+.aqiSection.moderate header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #ca3500;
+}
+
+.aqiSection.poor header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #c10007;
+}
+
+.aqiSection.veryPoor header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #8200db;
+}
+
+.aqiSection.hazardous header condition {
+    font-size: 16px;
+    height: 24px;
+    color: #8b0836;
+}
+
+.aqiSection .pm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    height: 64px;
+    width: 100%;
+}
+
+.aqiSection .pm .aqiLeft,
+.aqiRight {
+    background-color: #f0fdf4;
+    border-radius: 10px;
+    padding: 8px 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 25%;
+    gap: 10px;
+}
+
+.aqiSection.good .pm .aqiLeft {
+    background-color: #f0fdf4;
+}
+
+.aqiSection.good .pm .aqiRight {
+    background-color: #f0fdf4;
+}
+
+.aqiSection.fair .pm .aqiLeft {
+    background-color: #fefce8;
+}
+
+.aqiSection.fair .pm .aqiRight {
+    background-color: #fefce8;
+}
+
+.aqiSection.moderate .pm .aqiLeft {
+    background-color: #fff7ed;
+}
+
+.aqiSection.moderate .pm .aqiRight {
+    background-color: #fff7ed;
+}
+
+.aqiSection.poor .pm .aqiLeft {
+    background-color: #fef2f2;
+}
+
+.aqiSection.poor .pm .aqiRight {
+    background-color: #fef2f2;
+}
+
+.aqiSection.veryPoor .pm .aqiLeft {
+    background-color: #faf5ff;
+}
+
+.aqiSection.veryPoor .pm .aqiRight {
+    background-color: #faf5ff;
+}
+
+.aqiSection.hazardous .pm .aqiLeft {
+    background-color: #fff1f2;
+}
+
+.aqiSection.hazardous .pm .aqiRight {
+    background-color: #fff1f2;
+}
+
+.aqiSection .pm p {
+    color: #6a7282;
+    height: 16px;
+    font-size: 12px;
+}
+
+.aqiSection .pm .readings {
+    height: 24px;
+    font-size: 16px;
+    color: #008236;
+    font-weight: 400;
+}
+
+.aqiSection.good .pm .readings {
+    color: #008236;
+}
+
+.aqiSection.fair .pm .readings {
+    color: #a65f00;
+}
+
+.aqiSection.moderate .pm .readings {
+    color: #ca3500;
+}
+
+.aqiSection.poor .pm .readings {
+    color: #c10007;
+}
+
+.aqiSection.veryPoor .pm .readings {
+    color: #8200db;
+}
+
+.aqiSection.hazardous .pm .readings {
+    color: #8b0836;
 }

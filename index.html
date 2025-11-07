@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="weather.css">
+    <link rel="stylesheet" href="mobile-view.css">
 </head>
 
 <body>
@@ -30,7 +31,7 @@
                 <div class="weatherContainer">
                     <header></header>
                     <div class="icon">
-                        
+
                     </div>
                     <div class="condition"></div>
                     <div class="temp"></div>
@@ -49,7 +50,7 @@
                                     </path>
                                 </svg>
                             </div>
-                            <div class="name">Humidity:&nbsp;<span>5%</span></div>
+                            <div class="name">Humidity:&nbsp;<span></span></div>
                         </div>
                         <div class="wind">
                             <div class="icon">
@@ -62,7 +63,23 @@
                                     <path d="M9.8 4.4A2 2 0 1 1 11 8H2"></path>
                                 </svg>
                             </div>
-                            <div class="name">Wind:&nbsp;<span>7 m/s</span></div>
+                            <div class="name">Wind:&nbsp;<span></span></div>
+                        </div>
+                    </div>
+                    <div class="aqiSection good">
+                        <header>
+                            <p>Air Quality:&nbsp;</p><span></span>
+                            <condition></condition>
+                        </header>
+                        <div class="pm">
+                            <div class="aqiLeft">
+                                <p>PM2.5</p>
+                                <div class="readings"> </div>
+                            </div>
+                            <div class="aqiRight">
+                                <p>PM10</p>
+                                <div class="readings"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -75,7 +92,7 @@
                             Mon
                         </div>
                         <div class="icon">
-                           
+
                         </div>
                         <div class="maxTemp">Max:&nbsp;<span></span></div>
                         <div class="minTemp">Min:&nbsp;<span></span></div>
@@ -85,7 +102,7 @@
                             Tue
                         </div>
                         <div class="icon">
-                            
+
                         </div>
                         <div class="maxTemp">Max:&nbsp;<span></span></div>
                         <div class="minTemp">Min:&nbsp;<span></span></div>
@@ -135,103 +152,113 @@
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                     <li>
                         <div class="time"></div>
                         <div class="icon">
-                        
+
                         </div>
                         <div class="temp"></div>
                     </li>
                 </ul>
                 <div class="leftButton">
                     <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-left" data-fg-b7rw74="3b4c6:0:/App.tsx:202:15:8296:25:e:ChevronLeft:BO45"><path d="m15 18-6-6 6-6"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-left"
+                            data-fg-b7rw74="3b4c6:0:/App.tsx:202:15:8296:25:e:ChevronLeft:BO45">
+                            <path d="m15 18-6-6 6-6"></path>
+                        </svg>
                     </button>
                 </div>
                 <div class="rightButton">
                     <button>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-chevron-right" data-fg-b7rw89="3b4c6:0:/App.tsx:234:15:9810:26:e:ChevronRight:BO45"><path d="m9 18 6-6-6-6"></path></svg>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-chevron-right"
+                            data-fg-b7rw89="3b4c6:0:/App.tsx:234:15:9810:26:e:ChevronRight:BO45">
+                            <path d="m9 18 6-6-6-6"></path>
+                        </svg>
                     </button>
                 </div>
             </div>
