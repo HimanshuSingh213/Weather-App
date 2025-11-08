@@ -134,6 +134,12 @@ async function getTodaysWeather() {
     searchBar.value = "";
 }
 
+searchBar.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        searchBtn.click();
+    }
+});
+
 async function getFiveDayForecast(city) {
     const url = `https://api.openweathermap.org/data/2.5/forecast?q=${encodeURIComponent(city)}&appid=60be50dd75f4feb87fa97509ee740d69&units=metric`;
     const response = await fetch(url);
@@ -343,7 +349,13 @@ async function getAQI(city) {
     const response = await fetch(URL);
     const finalData = await response.json();
 
-    if (finalData.status !== "ok") return;
+    if (finalData.status !== "ok") {
+        updateAQIClass(50);
+        aqiValue.textContent = `AQI -`;
+        PM2.textContent = `- μg/m³`;
+        PM10.textContent = `- μg/m³`;
+        return;
+    }
 
     const aqiVal = finalData.data.aqi;
     updateAQIClass(aqiVal);
@@ -376,14 +388,14 @@ async function updateAQIClass(aqiVal) {
     else if (aqiVal <= 100) aqiClass = "fair";
     else if (aqiVal <= 150) aqiClass = "moderate";
     else if (aqiVal <= 200) aqiClass = "poor";
-    else if (aqiVal <= 300) aqiClass = "verypoor";
+    else if (aqiVal <= 300) aqiClass = "veryPoor";
     else aqiClass = "hazardous";
 
     aqiSection.classList.add(aqiClass);
 
-    if (aqiClass === "verypoor") {
+    if (aqiClass === "veryPoor") {
         aqiCondition.textContent = "Very Poor";
-    } 
+    }
     else {
         aqiCondition.textContent = aqiClass.charAt(0).toUpperCase() + aqiClass.slice(1);
     }
