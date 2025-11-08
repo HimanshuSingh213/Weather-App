@@ -152,13 +152,31 @@ async function getFiveDayForecast(city) {
     for (let i = 0; i < 5; i++) {
         nextFiveDays[i].textContent = getDayName(fiveDays[i].dt_txt);
         nextFiveDaysSVG[i].innerHTML = getSVG(fiveDays[i].weather[0].main);
-        nextFiveDayMinTemp[i].textContent = parseFloat(fiveDays[i].main.temp_min.toFixed(1)) + "°C";
-        nextFiveDayMaxTemp[i].textContent = parseFloat(fiveDays[i].main.temp_max.toFixed(1)) + "°C";
-        nextFiveDayMinTemp[i].dataset.celsius = parseFloat(fiveDays[i].main.temp_min.toFixed(1));
-        nextFiveDayMaxTemp[i].dataset.celsius = parseFloat(fiveDays[i].main.temp_max.toFixed(1));
+
+        const date = fiveDays[i].dt_txt.slice(0, 10);
+
+        const { min, max } = getDayMinMax(FinalData.list, date);
+
+        nextFiveDayMinTemp[i].textContent = parseFloat(min.toFixed(1)) + "°C";
+        nextFiveDayMaxTemp[i].textContent = parseFloat(max.toFixed(1)) + "°C";
+        nextFiveDayMinTemp[i].dataset.celsius = parseFloat(min.toFixed(1));
+        nextFiveDayMaxTemp[i].dataset.celsius = parseFloat(max.toFixed(1));
+
     }
 
     getHourlyWeather(FinalData);
+}
+
+function getDayMinMax(list, date) {
+    const entries = list.filter(item => item.dt_txt.startsWith(date));
+
+    const mins = entries.map(e => e.main.temp_min);
+    const maxs = entries.map(e => e.main.temp_max);
+
+    return {
+        min: Math.min(...mins),
+        max: Math.max(...maxs)
+    };
 }
 
 function getDayName(date) {
